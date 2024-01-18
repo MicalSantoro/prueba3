@@ -155,7 +155,7 @@ fun AppUI(
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun FormularioUI(permisosVM: PermisosVM, registroVM: RegistroVM) {
-    var placeVisited by remember { mutableStateOf("") }
+    var lugar by remember { mutableStateOf("") }
 
 
     LazyColumn(
@@ -182,12 +182,12 @@ fun FormularioUI(permisosVM: PermisosVM, registroVM: RegistroVM) {
 
     ) {
         TextField(
-            value = placeVisited,
-            onValueChange = { placeVisited = it},
-            label = { Text("Agregue un lugar") },
+            value = lugar,
+            onValueChange = { lugar = it},
+            label = { Text("¿Qué lugar ha visitado?") },
             keyboardActions = KeyboardActions(
                 onDone = {
-                    registroVM.lugar.value = placeVisited
+                    registroVM.lugar.value = lugar
                 }
             ),
             keyboardOptions = KeyboardOptions.Default.copy(
@@ -240,8 +240,8 @@ fun FormularioUI(permisosVM: PermisosVM, registroVM: RegistroVM) {
             }
         ) {
             Text("Agregar Ubicacion")
-        }
-        //  if(showMap){MapUI(appVM = appVM, formVM = formVM)}
+
+}
     }
 }
 
@@ -318,7 +318,7 @@ fun MapaOsmUI(permisosVM: PermisosVM, registroVM: RegistroVM, permissionLauncher
                 Log.d("Location", "Lat: ${registroVM.latitud.value} Long: ${registroVM.longitud.value}")
 
             }}) {
-            Text("Obtener Ubicación")
+            Text("Tomar Ubicación")
         }
 
         Text(
